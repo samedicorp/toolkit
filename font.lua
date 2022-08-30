@@ -6,7 +6,7 @@
 local Class = require('samedicorp.toolkit.class')
 local Font = Class.define('font')
 
-local loadFont = _ENV.loadFont
+-- local loadFont = _ENV.loadFont
 
 function Font:init(name, size)
     self.name = name

@@ -6,8 +6,8 @@
 local Class = require('samedicorp.toolkit.class')
 local Triangle = Class.define('triangle')
 
-local addTriangle = _ENV.addTriangle
-local setNextStrokeWidth = _ENV.setNextStrokeWidth
+-- local addTriangle = _ENV.addTriangle
+-- local setNextStrokeWidth = _ENV.setNextStrokeWidth
 
 function Triangle:init(p1, p2, p3)
     self.p1 = p1

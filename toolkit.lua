@@ -11,12 +11,12 @@ end
 
 debugf = printf
 
-local getInput = _ENV.getInput
-local requestAnimationFrame = _ENV.requestAnimationFrame
-local addBox = _ENV.addBox
-local setNextStrokeWidth = _ENV.setNextStrokeWidth
-local getRenderCost = _ENV.getRenderCost
-local getRenderCostMax = _ENV.getRenderCostMax
+-- local getInput = _ENV.getInput
+-- local requestAnimationFrame = _ENV.requestAnimationFrame
+-- local addBox = _ENV.addBox
+-- local setNextStrokeWidth = _ENV.setNextStrokeWidth
+-- local getRenderCost = _ENV.getRenderCost
+-- local getRenderCostMax = _ENV.getRenderCostMax
 
 local Button = require('samedicorp.toolkit.button')
 local Color = require('samedicorp.toolkit.color')

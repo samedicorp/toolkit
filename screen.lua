@@ -3,16 +3,16 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
--- local Class = require('samedicorp.toolkit.class')
+local Class = require('samedicorp.toolkit.class')
 local Point = require('samedicorp.toolkit.point')
 local Rect = require('samedicorp.toolkit.rect')
 
-local Screen = {}
--- local Screen = Class.define('screen')
+-- local Screen = {}
+local Screen = Class.define('screen')
 
-local getResolution = _ENV.getResolution
-local getCursor = _ENV.getCursor
-local getCursorDown = _ENV.getCursorDown
+-- local getResolution = _ENV.getResolution
+-- local getCursor = _ENV.getCursor
+-- local getCursorDown = _ENV.getCursorDown
 
 function Screen.new() 
     local s = {}
@@ -20,7 +20,10 @@ function Screen.new()
     return s
 end
 
-Screen.default = Screen.new()
+function Screen.default()
+    Screen.defaultScreen = Screen.defaultScreen or Screen.new()
+    return Screen.defaultScreen
+end
 
 function Screen:rect()
     local width, height = getResolution()

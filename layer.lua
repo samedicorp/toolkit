@@ -17,12 +17,12 @@ local Widget = require('samedicorp.toolkit.widget')
 
 local Layer = Class.define('layer', Widget)
 
-local createLayer = _ENV.createLayer
-local addText = _ENV.addText
-local requestAnimationFrame = _ENV.requestAnimationFrame
+-- local createLayer = _ENV.createLayer
+-- local addText = _ENV.addText
+-- local requestAnimationFrame = _ENV.requestAnimationFrame
 
 function Layer:init(rect)
-    local screen = Screen.default
+    local screen = Screen.default()
     self.super.init(self, rect or screen:safeRect())
     self.layer = createLayer()
     self.defaultFont = Font.new("Play", 20)
@@ -94,8 +94,8 @@ function Layer:textLineField(lines, rect, font)
     local downFill = Color.black
 
     local s = self.scroll or 0
-    local cursor = Screen.default:cursor()
-    if Screen.default:isCursorDown() and (cursor.x > (width - scrollBarWidth)) then
+    local cursor = self.screen:cursor()
+    if self.screen:isCursorDown() and (cursor.x > (width - scrollBarWidth)) then
         if cursor.y > (height / 2) then
             self.scroll = s + 1
             downFill = Color.white
