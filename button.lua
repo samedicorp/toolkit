@@ -3,11 +3,11 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Align = require('samedicorp.modula.toolkit.align')
-local Color = require('samedicorp.modula.toolkit.color')
-local Rect = require('samedicorp.modula.toolkit.rect')
-local Text = require('samedicorp.modula.toolkit.text')
-local Widget = require('samedicorp.modula.toolkit.widget')
+local Align = require('samedicorp.toolkit.align')
+local Color = require('samedicorp.toolkit.color')
+local Rect = require('samedicorp.toolkit.rect')
+local Text = require('samedicorp.toolkit.text')
+local Widget = require('samedicorp.toolkit.widget')
 
 local Button = {}
 

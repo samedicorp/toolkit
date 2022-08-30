@@ -3,7 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Align = require('samedicorp.modula.toolkit.align')
+local Align = require('samedicorp.toolkit.align')
 
 local Text = {}
 

@@ -3,10 +3,10 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Point = require('samedicorp.modula.toolkit.point')
-local Rect = require('samedicorp.modula.toolkit.rect')
-local Text = require('samedicorp.modula.toolkit.text')
-local Widget = require('samedicorp.modula.toolkit.widget')
+local Point = require('samedicorp.toolkit.point')
+local Rect = require('samedicorp.toolkit.rect')
+local Text = require('samedicorp.toolkit.text')
+local Widget = require('samedicorp.toolkit.widget')
 
 local Label = {}
 setmetatable(Label, { __index = Widget })

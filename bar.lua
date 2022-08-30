@@ -3,9 +3,9 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Color = require('samedicorp.modula.toolkit.color')
-local Rect = require('samedicorp.modula.toolkit.rect')
-local Widget = require('samedicorp.modula.toolkit.widget')
+local Color = require('samedicorp.toolkit.color')
+local Rect = require('samedicorp.toolkit.rect')
+local Widget = require('samedicorp.toolkit.widget')
 
 local Bar = {}
 setmetatable(Bar, { __index = Widget })

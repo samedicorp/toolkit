@@ -3,8 +3,8 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Point = require('samedicorp.modula.toolkit.point')
-local Rect = require('samedicorp.modula.toolkit.rect')
+local Point = require('samedicorp.toolkit.point')
+local Rect = require('samedicorp.toolkit.rect')
 
 local Screen = {}
 

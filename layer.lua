@@ -3,16 +3,16 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Bar = require('samedicorp.modula.toolkit.bar')
-local Button = require('samedicorp.modula.toolkit.button')
-local Color = require('samedicorp.modula.toolkit.color')
-local Font = require('samedicorp.modula.toolkit.font')
-local Label = require('samedicorp.modula.toolkit.label')
-local Point = require('samedicorp.modula.toolkit.point')
-local Rect = require('samedicorp.modula.toolkit.rect')
-local Screen = require('samedicorp.modula.toolkit.screen')
-local Triangle = require('samedicorp.modula.toolkit.triangle')
-local Widget = require('samedicorp.modula.toolkit.widget')
+local Bar = require('samedicorp.toolkit.bar')
+local Button = require('samedicorp.toolkit.button')
+local Color = require('samedicorp.toolkit.color')
+local Font = require('samedicorp.toolkit.font')
+local Label = require('samedicorp.toolkit.label')
+local Point = require('samedicorp.toolkit.point')
+local Rect = require('samedicorp.toolkit.rect')
+local Screen = require('samedicorp.toolkit.screen')
+local Triangle = require('samedicorp.toolkit.triangle')
+local Widget = require('samedicorp.toolkit.widget')
 
 local Layer = { }
 setmetatable(Layer, { __index = Widget })

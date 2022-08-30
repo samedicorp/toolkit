@@ -3,7 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Point = require('samedicorp.modula.toolkit.point')
+local Point = require('samedicorp.toolkit.point')
 
 local Rect = { class = "rect" }
 

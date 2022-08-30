@@ -3,12 +3,12 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Bar = require('samedicorp.modula.toolkit.bar')
-local Font = require('samedicorp.modula.toolkit.font')
-local Label = require('samedicorp.modula.toolkit.label')
-local Rect = require('samedicorp.modula.toolkit.rect')
-local Text = require('samedicorp.modula.toolkit.text')
-local Widget = require('samedicorp.modula.toolkit.widget')
+local Bar = require('samedicorp.toolkit.bar')
+local Font = require('samedicorp.toolkit.font')
+local Label = require('samedicorp.toolkit.label')
+local Rect = require('samedicorp.toolkit.rect')
+local Text = require('samedicorp.toolkit.text')
+local Widget = require('samedicorp.toolkit.widget')
 
 Chart = { super = Widget }
 setmetatable(Chart, { __index = Widget })
