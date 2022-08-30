@@ -4,16 +4,16 @@
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 local Align = require('samedicorp.toolkit.align')
+local Class = require('samedicorp.toolkit.class')
 local Color = require('samedicorp.toolkit.color')
 local Rect = require('samedicorp.toolkit.rect')
 local Text = require('samedicorp.toolkit.text')
 local Widget = require('samedicorp.toolkit.widget')
 
-local Button = {}
+local Button = Class.define('button', Widget)
 
-setmetatable(Button, { __index = Widget })
-
-function Button.new(rect, text, options)
+function Button:init(rect, text, options)
+    self.super.init(self, rect)
     if type(options) == "function" then
         options = { onMouseUp = options }
     else
@@ -28,22 +28,16 @@ function Button.new(rect, text, options)
         style = Button.defaultStyle
     end
 
-    local b = { 
-        text = Text.asText(text), 
-        rect = Rect.asRect(rect), 
-        onMouseDown = options.onMouseDown,
-        onMouseDrag = options.onMouseDrag,
-        onMouseUp = options.onMouseUp,
-        align = { h = Align.center, v = Align.middle },
-        drawInLayer = style,
-        labelInset = options.labelInset or 2,
-        fitText = options.fitText or true
-    }
+    self.text = Text.asText(text)
+    self.onMouseDown = options.onMouseDown
+    self.onMouseDrag = options.onMouseDrag
+    self.onMouseUp = options.onMouseUp
+    self.align = { h = Align.center, v = Align.middle }
+    self.drawInLayer = style
+    self.labelInset = options.labelInset or 2
+    self.fitText = options.fitText or true
 
-    setmetatable(b, { __index = Button })
-    Widget.init(b)
-
-    return b
+    return self
 end
 
 function Button:autoSize(layer)

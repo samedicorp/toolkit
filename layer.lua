@@ -5,6 +5,7 @@
 
 local Bar = require('samedicorp.toolkit.bar')
 local Button = require('samedicorp.toolkit.button')
+local Class = require('samedicorp.toolkit.class')
 local Color = require('samedicorp.toolkit.color')
 local Font = require('samedicorp.toolkit.font')
 local Label = require('samedicorp.toolkit.label')
@@ -14,26 +15,20 @@ local Screen = require('samedicorp.toolkit.screen')
 local Triangle = require('samedicorp.toolkit.triangle')
 local Widget = require('samedicorp.toolkit.widget')
 
-local Layer = { }
-setmetatable(Layer, { __index = Widget })
+local Layer = Class.define('layer', Widget)
 
 local createLayer = _ENV.createLayer
 local addText = _ENV.addText
 local requestAnimationFrame = _ENV.requestAnimationFrame
 
-function Layer.new(rect)
+function Layer:init(rect)
     local screen = Screen.default
-    local l = { 
-        rect = rect or screen:safeRect(),
-        layer = createLayer(),
-        widgets = {},
-        defaultFont = Font.new("Play", 20),
-        screen = screen
-    }
-    Widget.init(l)
+    self.super.init(self, rect or screen:safeRect())
+    self.layer = createLayer()
+    self.defaultFont = Font.new("Play", 20)
+    self.screen = screen
 
-    setmetatable(l, { __index = Layer })
-    return l
+    return self
 end
 
 function Layer:draw(object)

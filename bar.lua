@@ -3,18 +3,17 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+local Class = require('samedicorp.toolkit.class')
 local Color = require('samedicorp.toolkit.color')
 local Rect = require('samedicorp.toolkit.rect')
 local Widget = require('samedicorp.toolkit.widget')
 
-local Bar = {}
-setmetatable(Bar, { __index = Widget })
+local Bar = Class.define('bar', Widget)
 
-function Bar.new(rect, value)
-    local b = { rect = Rect.asRect(rect), value = value }
-    setmetatable(b, { __index = Bar })
-    Widget.init(b)
-    return b
+function Bar:init(rect, value)
+    self.super.init(self, rect)
+    self.value = value
+    return self
 end
 
 function Bar:drawInLayer(layer)

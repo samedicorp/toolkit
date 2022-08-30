@@ -3,10 +3,15 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Widget = { class = "widget" }
+local Class = require('samedicorp.toolkit.class')
+local Rect = require('samedicorp.toolkit.rect')
 
-function Widget:init()
+local Widget = Class.define("widget")
+
+function Widget:init(rect)
     self.widgets = {}
+    self.rect = Rect.asRect(rect)
+    return self
 end
 
 function Widget:hitTest(point)

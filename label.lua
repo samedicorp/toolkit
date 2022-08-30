@@ -3,19 +3,18 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+local Class = require('samedicorp.toolkit.class')
 local Point = require('samedicorp.toolkit.point')
 local Rect = require('samedicorp.toolkit.rect')
 local Text = require('samedicorp.toolkit.text')
 local Widget = require('samedicorp.toolkit.widget')
 
-local Label = {}
-setmetatable(Label, { __index = Widget })
+local Label = Class.define('label', Widget)
 
-function Label.new(rect, text)
-    local l = { text = Text.asText(text), rect = Rect.asRect(rect) }
-    setmetatable(l, { __index = Label })
-    Widget.init(l)
-    return l
+function Label:init(rect, text)
+    self.super.init(self, rect)
+    self.text = Text.asText(text)
+    return self
 end
 
 function Label:hitTest(cursor)

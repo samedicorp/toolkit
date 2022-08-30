@@ -5,24 +5,17 @@
 
 local Align = require('samedicorp.toolkit.align')
 local Bar = require('samedicorp.toolkit.bar')
+local Class = require('samedicorp.toolkit.class')
 local Font = require('samedicorp.toolkit.font')
 local Label = require('samedicorp.toolkit.label')
 local Rect = require('samedicorp.toolkit.rect')
 local Text = require('samedicorp.toolkit.text')
 local Widget = require('samedicorp.toolkit.widget')
 
-Chart = { super = Widget }
-setmetatable(Chart, { __index = Widget })
+local Chart = Class.define('chart', Widget)
 
-function Chart.new(rect, bars, fontName)
-    local c = { 
-        rect = Rect.asRect(rect), 
-        widgets = {},
-        font = font
-    }
-
-    setmetatable(c, { __index = Chart })
-    Chart.super.init(c)
+function Chart:init(rect, bars, fontName)
+    self.super.init(self, rect)
 
     local count = 0
     for _,_ in pairs(bars) do
@@ -39,16 +32,16 @@ function Chart.new(rect, bars, fontName)
     for name,bar in pairs(bars) do
         local percent = math.floor(bar.value * 100)
         rect.height = barHeight
-        c:addWidget(Bar.new(rect, bar.value))
+        self:addWidget(Bar.new(rect, bar.value))
         rect.y = rect.y + barHeight
         
         rect.height = labelSize
-        c:addLabel(rect, Text.new(name, labelFont, { align = nameAlign }))
-        c:addLabel(rect, Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign }))
+        self:addLabel(rect, Text.new(name, labelFont, { align = nameAlign }))
+        self:addLabel(rect, Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign }))
         rect.y = rect.y + labelFont.size
     end
 
-    return c
+    return self
 
 
 end
