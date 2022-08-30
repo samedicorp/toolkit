@@ -16,9 +16,13 @@ function Rect.new(x, y, w, h)
     return r
 end
 
+--- Clone the input as a rect.
+--- accepts another rect, or a 4-element table with x,y,width,height
 function Rect.asRect(r)
     if not r.class then
         r = Rect.new(r[1], r[2], r[3], r[4])
+    else
+        r = Rect.new(r.x, r.y, r.width, r.height)
     end
     return r
 end

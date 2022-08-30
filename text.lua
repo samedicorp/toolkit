@@ -11,7 +11,7 @@ local addText = _ENV.addText
 local setNextTextAlign = _ENV.setNextTextAlign
 local getTextBounds = _ENV.getTextBounds
 
-function Text.new(text, font, color, options)
+function Text.new(text, font, options)
     options = options or {}
     local t = { 
         text = text, 
@@ -49,7 +49,7 @@ function Text:drawInLayer(layer, rect, explicitOptions)
 
     local align = explicitOptions.align or self.align
     local position = rect:topLeft()
-    if align.h == Align.trailing then
+    if align.h == Align.right then
         position.x = rect:topRight().x
     elseif align.h == Align.center then
         position.x = rect:topMid().x

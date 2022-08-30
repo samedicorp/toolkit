@@ -3,6 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+local Align = require('samedicorp.toolkit.align')
 local Bar = require('samedicorp.toolkit.bar')
 local Font = require('samedicorp.toolkit.font')
 local Label = require('samedicorp.toolkit.label')
@@ -28,19 +29,23 @@ function Chart.new(rect, bars, fontName)
         count = count + 1
     end
 
-    local x = rect.x
-    local y = rect.y
     local labelSize = rect.height / (5 * count)
     local labelFont = Font.new(fontName, labelSize)
     local barHeight = (rect.height / (count)) - labelFont.size
-    local barWidth = rect.width
 
+    local nameAlign = { h = Align.left, v = Align.top }
+    local percentAlign = { h = Align.right, v = Align.top }
+    
     for name,bar in pairs(bars) do
         local percent = math.floor(bar.value * 100)
-        c:addWidget(Bar.new({0, y, barWidth, barHeight}, bar.value))
-        y = y + barHeight + labelFont.size
-        c:addWidget(Label.new({ 0, y - 4}, Text.new(name, labelFont)))
-        c:addWidget(Label.new({ rect.width - (barWidth / 2), y }, Text.new(string.format("%d%%", percent), labelFont)))
+        rect.height = barHeight
+        c:addWidget(Bar.new(rect, bar.value))
+        rect.y = rect.y + barHeight
+        
+        rect.height = labelSize
+        c:addLabel(rect, Text.new(name, labelFont, { align = nameAlign }))
+        c:addLabel(rect, Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign }))
+        rect.y = rect.y + labelFont.size
     end
 
     return c
