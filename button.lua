@@ -103,5 +103,10 @@ function Button:defaultStyle(layer, isOver, isDown)
     self.text:drawInLayer(layer, lr, { fill = text, align = self.align })
 end
 
+function Widget:addButton(...)
+    local button = Button.new(...)
+    self:addWidget(button)
+    return button
+end
 
 return Button

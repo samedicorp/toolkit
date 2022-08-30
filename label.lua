@@ -26,4 +26,10 @@ function Label:drawInLayer(layer)
     self.text:drawInLayer(layer, self.rect)
 end
 
+function Widget:addLabel(...)
+    local label = Label.new(...)
+    self:addWidget(label)
+    return label
+end
+
 return Label

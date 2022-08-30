@@ -28,7 +28,8 @@ function Chart.new(rect, bars, fontName)
         count = count + 1
     end
 
-    local y = 0
+    local x = rect.x
+    local y = rect.y
     local labelSize = rect.height / (5 * count)
     local labelFont = Font.new(fontName, labelSize)
     local barHeight = (rect.height / (count)) - labelFont.size

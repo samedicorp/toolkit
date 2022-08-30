@@ -18,10 +18,17 @@ function Bar.new(rect, value)
 end
 
 function Bar:drawInLayer(layer)
+    printf("draw bar")
     local inset = self.rect.width * (1.0 - self.value)
     self.rect:draw(layer.layer, Color.white, Color.black)
     local r = self.rect:inset(0, 0, inset, 0)
     r:draw(layer.layer, Color.white, Color.white)
+end
+
+function Widget:addBar(...)
+    local bar = Bar.new(...)
+    self:addWidget(bar)
+    return bar
 end
 
 return Bar

@@ -63,23 +63,6 @@ function Layer:render()
 end
 
 
-function Layer:addButton(...)
-    local button = Button.new(...)
-    self:addWidget(button)
-    return button
-end
-
-function Layer:addLabel(...)
-    local label = Label.new(...)
-    self:addWidget(label)
-    return label
-end
-
-function Layer:addBar(...)
-    local bar = Bar.new(...)
-    self:addWidget(bar)
-    return bar
-end
 
 function Layer:scheduleRefresh()
     local rate
