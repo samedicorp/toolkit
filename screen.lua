@@ -3,10 +3,12 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+-- local Class = require('samedicorp.toolkit.class')
 local Point = require('samedicorp.toolkit.point')
 local Rect = require('samedicorp.toolkit.rect')
 
 local Screen = {}
+-- local Screen = Class.define('screen')
 
 local getResolution = _ENV.getResolution
 local getCursor = _ENV.getCursor

@@ -3,15 +3,17 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Triangle = {}
+local Class = require('samedicorp.toolkit.class')
+local Triangle = Class.define('triangle')
 
 local addTriangle = _ENV.addTriangle
 local setNextStrokeWidth = _ENV.setNextStrokeWidth
 
-function Triangle.new(p1, p2, p3)
-    local t = { p1 = p1, p2 = p2, p3 = p3 }
-    setmetatable(t, { __index = Triangle })
-    return t
+function Triangle:init(p1, p2, p3)
+    self.p1 = p1
+    self.p2 = p2
+    self.p3 = p3
+    return self
 end
 
 function Triangle:draw(layer, stroke, fill, width)

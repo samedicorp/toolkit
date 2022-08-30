@@ -3,15 +3,19 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Color = {}
+local Class = require('samedicorp.toolkit.class')
+
+local Color = Class.define('color')
 
 local setNextFillColor = _ENV.setNextFillColor
 local setNextStrokeColor = _ENV.setNextStrokeColor
 
-function Color.new(r, g, b, a)
-    local c = { red = r, green = g, blue = b, alpha = a or 1}
-    setmetatable(c, { __index = Color })
-    return c
+function Color:init(r, g, b, a)
+    self.red = r
+    self.green = g
+    self.blue = b
+    self.alpha = a or 1
+    return self
 end
 
 Color.white = Color.new(1, 1, 1)

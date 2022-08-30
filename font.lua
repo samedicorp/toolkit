@@ -3,14 +3,16 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Font = {}
+local Class = require('samedicorp.toolkit.class')
+local Font = Class.define('font')
 
 local loadFont = _ENV.loadFont
 
-function Font.new(name, size)
-    local f = { name = name, size = size, font = loadFont(name, size)}
-    setmetatable(f, { __index = Font })
-    return f
+function Font:init(name, size)
+    self.name = name
+    self.size = size
+    self.font = loadFont(name, size)
+    return self
 end
 
 return Font

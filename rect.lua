@@ -3,23 +3,26 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+local Class = require('samedicorp.toolkit.class')
 local Point = require('samedicorp.toolkit.point')
 
-local Rect = { class = "rect" }
+local Rect = Class.define("rect")
 
 local addBox = _ENV.addBox
 local setNextStrokeWidth = _ENV.setNextStrokeWidth
 
-function Rect.new(x, y, w, h)
-    local r = { x = x, y = y, width = w or 0, height = h or 0 }
-    setmetatable(r, { __index = Rect })
-    return r
+function Rect:init(x, y, w, h)
+    self.x = x
+    self.y = y
+    self.width = w or 0
+    self.height = h or 0
+    return self
 end
 
 --- Clone the input as a rect.
 --- accepts another rect, or a 4-element table with x,y,width,height
 function Rect.asRect(r)
-    if not r.class then
+    if not r.className then
         r = Rect.new(r[1], r[2], r[3], r[4])
     else
         r = Rect.new(r.x, r.y, r.width, r.height)
