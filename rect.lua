@@ -8,9 +8,6 @@ local Point = require('samedicorp.toolkit.point')
 
 local Rect = Class.define("rect")
 
--- local addBox = _ENV.addBox
--- local setNextStrokeWidth = _ENV.setNextStrokeWidth
-
 function Rect:init(x, y, w, h)
     self.x = x
     self.y = y

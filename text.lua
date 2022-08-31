@@ -7,10 +7,6 @@ local Align = require('samedicorp.toolkit.align')
 
 local Text = {}
 
--- local addText = _ENV.addText
--- local setNextTextAlign = _ENV.setNextTextAlign
--- local getTextBounds = _ENV.getTextBounds
-
 function Text.new(text, font, options)
     options = options or {}
     local t = { 

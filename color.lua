@@ -7,9 +7,6 @@ local Class = require('samedicorp.toolkit.class')
 
 local Color = Class.define('color')
 
--- local setNextFillColor = _ENV.setNextFillColor
--- local setNextStrokeColor = _ENV.setNextStrokeColor
-
 function Color:init(r, g, b, a)
     self.red = r
     self.green = g
