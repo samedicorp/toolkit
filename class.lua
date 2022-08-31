@@ -8,6 +8,7 @@ local Object = { className = "object" }
 
 
 function Object:init(...)
+  return self
 end
 
 function Class.define(name, base)
