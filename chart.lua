@@ -42,9 +42,12 @@ function Chart:init(rect, bars, fontName)
     end
 
     return self
-
-
 end
 
+function Widget:addChart(...)
+    local chart = Chart.new(...)
+    self:addWidget(chart)
+    return chart
+end
 
 return Chart

@@ -11,7 +11,6 @@ local Font = require('samedicorp.toolkit.font')
 local Label = require('samedicorp.toolkit.label')
 local Point = require('samedicorp.toolkit.point')
 local Rect = require('samedicorp.toolkit.rect')
-local Screen = require('samedicorp.toolkit.screen')
 local Triangle = require('samedicorp.toolkit.triangle')
 local Widget = require('samedicorp.toolkit.widget')
 
@@ -21,8 +20,7 @@ local Layer = Class.define('layer', Widget)
 -- local addText = _ENV.addText
 -- local requestAnimationFrame = _ENV.requestAnimationFrame
 
-function Layer:init(rect)
-    local screen = Screen.default()
+function Layer:init(rect, screen)
     self.super.init(self, rect or screen:safeRect())
     self.layer = createLayer()
     self.defaultFont = Font.new("Play", 20)
