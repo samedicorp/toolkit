@@ -52,7 +52,7 @@ function Screen:addLayer(rect)
     return layer
 end
 
-function Layer:scheduleRefresh()
+function Screen:scheduleRefresh()
     local rate
     if self:isFocussed() then
         rate = 2
