@@ -16,10 +16,6 @@ local Widget = require('samedicorp.toolkit.widget')
 
 local Layer = Class.define('layer', Widget)
 
--- local createLayer = _ENV.createLayer
--- local addText = _ENV.addText
--- local requestAnimationFrame = _ENV.requestAnimationFrame
-
 function Layer:init(rect, screen)
     self.super.init(self, rect or screen:safeRect())
     self.layer = createLayer()
@@ -53,20 +49,6 @@ function Layer:render()
     elseif isDown and clickedWidget then
         clickedWidget:mouseDrag(cursor)
     end
-end
-
-
-
-function Layer:scheduleRefresh()
-    local rate
-    if self.screen:isFocussed() then
-        rate = 2
-    else
-        rate = 30
-    end
-
-    requestAnimationFrame(rate)
-    return rate
 end
 
 function Layer:textField(text, rect, font)

@@ -25,10 +25,6 @@ local Widget = require('samedicorp.toolkit.widget')
 
 local Screen = Class.define('screen')
 
--- local getResolution = _ENV.getResolution
--- local getCursor = _ENV.getCursor
--- local getCursorDown = _ENV.getCursorDown
-
 function Screen:rect()
     local width, height = getResolution()
     return Rect.new(0, 0, width, height)
@@ -54,6 +50,18 @@ end
 function Screen:addLayer(rect)
     local layer = Layer.new(rect, self)
     return layer
+end
+
+function Layer:scheduleRefresh()
+    local rate
+    if self:isFocussed() then
+        rate = 2
+    else
+        rate = 30
+    end
+
+    requestAnimationFrame(rate)
+    return rate
 end
 
 return Screen
