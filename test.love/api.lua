@@ -1,5 +1,6 @@
 function getResolution()
-    return 1024,768
+    local x, y, w, h = love.window.getSafeArea()
+    return love.window.toPixels(w), love.window.toPixels(h)
 end
 
 function setNextFillColor(layer, red, green, blue, alpha)
@@ -14,6 +15,7 @@ function setNextStrokeWidth(layer, width)
 end
 
 function setNextTextAlign(layer, alignX, alignY)
+    alignment = { h = alignX, v = alignY }
 end
 
 function addBox(layer, x, y, width, height)
@@ -52,8 +54,22 @@ function getCursorDown()
 end
 
 function addText(layer, font, text, x, y)
-    love.graphics.setFont(font)
-    love.graphics.print(text, x, y)
+    alignment = alignment or { h = AlignH_Left, v = AlignV_Top }
+
+    local t = love.graphics.newText(font, text)
+    local width, height = t:getDimensions()
+
+    if alignment.h == AlignH_Center then
+        x = x - (width / 2)
+    elseif alignment.h == AlignH_Right then
+        x = x - width
+    end
+
+    if alignment.v == AlignV_Middle then
+        y = y + (height / 2)
+    end
+
+    love.graphics.draw(t, x, y - height)
 end
 
 function getTextBounds(font, text)
