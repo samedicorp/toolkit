@@ -3,16 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Align = require('samedicorp.toolkit.align')
-local Bar = require('samedicorp.toolkit.bar')
-local Class = require('samedicorp.toolkit.class')
-local Font = require('samedicorp.toolkit.font')
-local Label = require('samedicorp.toolkit.label')
-local Rect = require('samedicorp.toolkit.rect')
-local Text = require('samedicorp.toolkit.text')
-local Widget = require('samedicorp.toolkit.widget')
-
-local Chart = Class.define('chart', Widget)
+local Chart = toolkit.define('Chart', 'Widget')
 
 function Chart:init(rect, bars, fontName)
     self.super.init(self, rect)
@@ -23,28 +14,28 @@ function Chart:init(rect, bars, fontName)
     end
 
     local labelSize = rect.height / (5 * count)
-    local labelFont = Font.new(fontName, labelSize)
+    local labelFont = toolkit.Font.new(fontName, labelSize)
     local barHeight = (rect.height / (count)) - labelFont.size
 
-    local nameAlign = { h = Align.left, v = Align.top }
-    local percentAlign = { h = Align.right, v = Align.top }
+    local nameAlign = { h = toolkit.Align.left, v = toolkit.Align.top }
+    local percentAlign = { h = toolkit.Align.right, v = toolkit.Align.top }
     
     for name,bar in pairs(bars) do
         local percent = math.floor(bar.value * 100)
         rect.height = barHeight
-        self:addWidget(Bar.new(rect, bar.value))
+        self:addWidget(toolkit.Bar.new(rect, bar.value))
         rect.y = rect.y + barHeight
         
         rect.height = labelSize
-        self:addLabel(rect, Text.new(name, labelFont, { align = nameAlign }))
-        self:addLabel(rect, Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign }))
+        self:addLabel(rect, toolkit.Text.new(name, labelFont, { align = nameAlign }))
+        self:addLabel(rect, toolkit.Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign }))
         rect.y = rect.y + labelFont.size
     end
 
     return self
 end
 
-function Widget:addChart(...)
+function toolkit.Widget:addChart(...)
     local chart = Chart.new(...)
     self:addWidget(chart)
     return chart

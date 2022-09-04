@@ -3,8 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Class = require('samedicorp.toolkit.class')
-local Triangle = Class.define('triangle')
+local Triangle = toolkit.define('Triangle')
 
 function Triangle:init(p1, p2, p3)
     self.p1 = p1
@@ -19,5 +18,3 @@ function Triangle:draw(layer, stroke, fill, width)
     setNextStrokeWidth(layer, width or 1)
     addTriangle(layer, self.p1.x, self.p1.y, self.p2.x, self.p2.y, self.p3.x, self.p3.y)
 end
-
-return Triangle

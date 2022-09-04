@@ -3,10 +3,8 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Class = require('samedicorp.toolkit.class')
-local Point = require('samedicorp.toolkit.point')
 
-local Rect = Class.define("rect")
+local Rect = toolkit.define("Rect")
 
 function Rect:init(x, y, w, h)
     self.x = x
@@ -43,7 +41,7 @@ function bottom()
 end
 
 function Rect:topLeft()
-    return Point.new(self.x, self.y)
+    return toolkit.Point.new(self.x, self.y)
 end
 
 function Rect:midLeft()
@@ -51,11 +49,11 @@ function Rect:midLeft()
 end
 
 function Rect:bottomLeft()
-    return Point.new(self.x, self.y + self.height - 1)
+    return toolkit.Point.new(self.x, self.y + self.height - 1)
 end
 
 function Rect:topRight()
-    return Point.new(self.x + self.width - 1, self.y)
+    return toolkit.Point.new(self.x + self.width - 1, self.y)
 end
 
 function Rect:midRight()
@@ -63,7 +61,7 @@ function Rect:midRight()
 end
 
 function Rect:bottomRight()
-    return Point.new(self.x + self.width - 1, self.y + self.height - 1)
+    return toolkit.Point.new(self.x + self.width - 1, self.y + self.height - 1)
 end
 
 function Rect:topMid()
@@ -89,5 +87,3 @@ function Rect:draw(layer, stroke, fill, options)
         addBox(layer, self.x, self.y, self.width, self.height)
     end
 end
-
-return Rect

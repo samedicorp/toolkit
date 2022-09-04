@@ -3,7 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Point = {}
+local Point = toolkit.define('Point')
 
 function Point.new(x, y)
     local p = { x = x, y = y}

@@ -3,23 +3,12 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Bar = require('samedicorp.toolkit.bar')
-local Button = require('samedicorp.toolkit.button')
-local Class = require('samedicorp.toolkit.class')
-local Color = require('samedicorp.toolkit.color')
-local Font = require('samedicorp.toolkit.font')
-local Label = require('samedicorp.toolkit.label')
-local Point = require('samedicorp.toolkit.point')
-local Rect = require('samedicorp.toolkit.rect')
-local Triangle = require('samedicorp.toolkit.triangle')
-local Widget = require('samedicorp.toolkit.widget')
-
-local Layer = Class.define('layer', Widget)
+local Layer = toolkit.define('Layer', 'Widget')
 
 function Layer:init(rect, screen)
     self.super.init(self, rect or screen:safeRect())
     self.layer = createLayer()
-    self.defaultFont = Font.new("Play", 20)
+    self.defaultFont = toolkit.Font.new("Play", 20)
     self.screen = screen
 
     return self
@@ -67,21 +56,21 @@ function Layer:textLineField(lines, rect, font)
 
     local scrollBarWidth = 24
 
-    local bar = Rect.new(x + width - scrollBarWidth + 1, y, scrollBarWidth, height - 1)
+    local bar = toolkit.Rect.new(x + width - scrollBarWidth + 1, y, scrollBarWidth, height - 1)
     local barIn = bar:inset(4)
 
-    local upFill = Color.black
-    local downFill = Color.black
+    local upFill = toolkit.Color.black
+    local downFill = toolkit.Color.black
 
     local s = self.scroll or 0
     local cursor = self.screen:cursor()
     if self.screen:isCursorDown() and (cursor.x > (width - scrollBarWidth)) then
         if cursor.y > (height / 2) then
             self.scroll = s + 1
-            downFill = Color.white
+            downFill = toolkit.Color.white
         elseif s > 0 then
             self.scroll = s - 1
-            upFill = Color.white
+            upFill = toolkit.Color.white
         end
     end
 
@@ -99,14 +88,14 @@ function Layer:textLineField(lines, rect, font)
     -- local text = string.format('render cost: %.02f', getRenderCost() / getRenderCostMax()) 
     -- addText(layer, font, text, 10, 20)
 
-    bar:draw(layer, Color.white, Color.black)
+    bar:draw(layer, toolkit.Color.white, toolkit.Color.black)
     local barInH = barIn.height
     barIn.height = barIn.width
-    local upT = Triangle.new(barIn:bottomLeft(), barIn:bottomRight(), barIn:topLeft():mid(barIn:topRight()))
-    upT:draw(layer, Color.white, upFill)
+    local upT = toolkit.Triangle.new(barIn:bottomLeft(), barIn:bottomRight(), barIn:topLeft():mid(barIn:topRight()))
+    upT:draw(layer, toolkit.Color.white, upFill)
     barIn.y = barIn.y + barInH - barIn.width
-    local downT = Triangle.new(barIn:topLeft(), barIn:topRight(), barIn:bottomLeft():mid(barIn:bottomRight()))
-    downT:draw(layer, Color.white, downFill)
+    local downT = toolkit.Triangle.new(barIn:topLeft(), barIn:topRight(), barIn:bottomLeft():mid(barIn:bottomRight()))
+    downT:draw(layer, toolkit.Color.white, downFill)
 end
 
 return Layer

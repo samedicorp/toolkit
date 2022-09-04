@@ -3,9 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Class = require('samedicorp.toolkit.class')
-
-local Color = Class.define('color')
+local Color = toolkit.define('Color')
 
 function Color:init(r, g, b, a)
     self.red = r

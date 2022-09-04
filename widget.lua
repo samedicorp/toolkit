@@ -3,14 +3,11 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Class = require('samedicorp.toolkit.class')
-local Rect = require('samedicorp.toolkit.rect')
-
-local Widget = Class.define("widget")
+local Widget = toolkit.define("Widget")
 
 function Widget:init(rect)
     self.widgets = {}
-    self.rect = Rect.asRect(rect)
+    self.rect = toolkit.Rect.asRect(rect)
     return self
 end
 
@@ -55,11 +52,5 @@ function Widget:renderAll(layer, cursor, isDown)
     return over
 end
 
-
-
-
 function Widget:drawInLayer(layer, isOver, isDown)
 end
-
-
-return Widget

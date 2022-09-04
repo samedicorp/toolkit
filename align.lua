@@ -16,4 +16,4 @@ Align.baseline = _ENV.AlignV_Baseline
 Align.bottom = _ENV.AlignV_Bottom
 Align.descender = _ENV.AlignV_Descender
 
-return Align
+toolkit.Align = Align

@@ -3,14 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Align = require('samedicorp.toolkit.align')
-local Class = require('samedicorp.toolkit.class')
-local Color = require('samedicorp.toolkit.color')
-local Rect = require('samedicorp.toolkit.rect')
-local Text = require('samedicorp.toolkit.text')
-local Widget = require('samedicorp.toolkit.widget')
-
-local Button = Class.define('button', Widget)
+local Button = toolkit.define('Button', 'Widget')
 
 function Button:init(rect, text, options)
     self.super.init(self, rect)
@@ -28,11 +21,11 @@ function Button:init(rect, text, options)
         style = Button.defaultStyle
     end
 
-    self.text = Text.asText(text)
+    self.text = toolkit.Text.asText(text)
     self.onMouseDown = options.onMouseDown
     self.onMouseDrag = options.onMouseDrag
     self.onMouseUp = options.onMouseUp
-    self.align = { h = Align.center, v = Align.middle }
+    self.align = { h = toolkit.Align.center, v = toolkit.Align.middle }
     self.drawInLayer = style
     self.labelInset = options.labelInset or 2
     self.fitText = options.fitText or true
@@ -54,17 +47,17 @@ function Button:lineStyle(layer, isOver, isDown)
     local fill
     local text
     if isDown and isOver then
-        stroke = Color.red
-        text = Color.black
-        fill = Color.white
+        stroke = toolkit.Color.red
+        text = toolkit.Color.black
+        fill = toolkit.Color.white
     elseif isOver then
-        stroke = Color.red
-        text = Color.white
-        fill = Color.black
+        stroke = toolkit.Color.red
+        text = toolkit.Color.white
+        fill = toolkit.Color.black
     else
-        stroke = Color.white
-        text = Color.white
-        fill = Color.black
+        stroke = toolkit.Color.white
+        text = toolkit.Color.white
+        fill = toolkit.Color.black
     end
 
     self:autoSize(layer)
@@ -78,17 +71,17 @@ function Button:defaultStyle(layer, isOver, isDown)
     local fill
     local text
     if isDown and isOver then
-        stroke = Color.white
-        text = Color.black
-        fill = Color.white
+        stroke = toolkit.Color.white
+        text = toolkit.Color.black
+        fill = toolkit.Color.white
     elseif isOver then
-        stroke = Color.white
-        text = Color.white
-        fill = Color.new(1, 1, 1, 0.2)
+        stroke = toolkit.Color.white
+        text = toolkit.Color.white
+        fill = toolkit.Color.new(1, 1, 1, 0.2)
     else
-        stroke = Color.white
-        text = Color.white
-        fill = Color.black
+        stroke = toolkit.Color.white
+        text = toolkit.Color.white
+        fill = toolkit.Color.black
     end
 
     self:autoSize(layer)
@@ -97,7 +90,7 @@ function Button:defaultStyle(layer, isOver, isDown)
     self.text:drawInLayer(layer, lr, { fill = text, align = self.align })
 end
 
-function Widget:addButton(...)
+function toolkit.Widget:addButton(...)
     local button = Button.new(...)
     self:addWidget(button)
     return button

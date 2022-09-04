@@ -3,16 +3,14 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Align = require('samedicorp.toolkit.align')
-
-local Text = {}
+local Text = toolkit.define('Text')
 
 function Text.new(text, font, options)
     options = options or {}
     local t = { 
         text = text, 
         font = font, 
-        align = options.align or { h = Align.left, v = Align.baseline },
+        align = options.align or { h = toolkit.Align.left, v = toolkit.Align.baseline },
         options = options
     }
 
@@ -45,14 +43,14 @@ function Text:drawInLayer(layer, rect, explicitOptions)
 
     local align = explicitOptions.align or self.align
     local position = rect:topLeft()
-    if align.h == Align.right then
+    if align.h == toolkit.Align.right then
         position.x = rect:topRight().x
-    elseif align.h == Align.center then
+    elseif align.h == toolkit.Align.center then
         position.x = rect:topMid().x
     end
-    if (align.v == Align.bottom) or (align.v == Align.descender) then
+    if (align.v == toolkit.Align.bottom) or (align.v == toolkit.Align.descender) then
         position.y = rect:bottomLeft().y
-    elseif (align.v == Align.middle) or (align.v == Align.baseline) then
+    elseif (align.v == toolkit.Align.middle) or (align.v == toolkit.Align.baseline) then
         position.y = rect:midLeft().y
     end
 

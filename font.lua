@@ -3,8 +3,7 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Class = require('samedicorp.toolkit.class')
-local Font = Class.define('font')
+local Font = toolkit.define('Font')
 
 function Font:init(name, size)
     self.name = name
