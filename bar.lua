@@ -23,5 +23,3 @@ function toolkit.Widget:addBar(...)
     self:addWidget(bar)
     return bar
 end
-
-return Bar

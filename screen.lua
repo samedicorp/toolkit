@@ -43,5 +43,3 @@ function Screen:scheduleRefresh()
     requestAnimationFrame(rate)
     return rate
 end
-
-return Screen

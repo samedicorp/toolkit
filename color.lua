@@ -26,5 +26,3 @@ end
 function Color:setNextFill(layer)
     setNextFillColor(layer, self.red, self.green, self.blue, self.alpha)
 end
-
-return Color

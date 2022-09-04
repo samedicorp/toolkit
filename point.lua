@@ -22,5 +22,3 @@ end
 function Point:plus(point)
     return Point.new(self.x + point.x, self.y + point.y)
 end
-
-return Point

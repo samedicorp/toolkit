@@ -24,5 +24,3 @@ function toolkit.Widget:addLabel(...)
     self:addWidget(label)
     return label
 end
-
-return Label

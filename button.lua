@@ -95,5 +95,3 @@ function toolkit.Widget:addButton(...)
     self:addWidget(button)
     return button
 end
-
-return Button

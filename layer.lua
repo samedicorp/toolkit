@@ -97,5 +97,3 @@ function Layer:textLineField(lines, rect, font)
     local downT = toolkit.Triangle.new(barIn:topLeft(), barIn:topRight(), barIn:bottomLeft():mid(barIn:bottomRight()))
     downT:draw(layer, toolkit.Color.white, downFill)
 end
-
-return Layer

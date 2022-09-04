@@ -11,5 +11,3 @@ function Font:init(name, size)
     self.font = loadFont(name, size)
     return self
 end
-
-return Font

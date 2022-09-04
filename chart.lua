@@ -40,5 +40,3 @@ function toolkit.Widget:addChart(...)
     self:addWidget(chart)
     return chart
 end
-
-return Chart
