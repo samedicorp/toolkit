@@ -21,7 +21,6 @@ function toolkit.define(name, baseName)
     if baseName then
         base = toolkit[baseName]
         if not base then
-            printf("forward declared %s", baseName)
             base = {}
             toolkit[baseName] = base
         end
@@ -34,7 +33,6 @@ function toolkit.define(name, baseName)
   definition.super = base
   definition.className = name
   toolkit[name] = definition
-  printf("declared %s", name)
 
   function definition.new(...)
     local instance = {}
