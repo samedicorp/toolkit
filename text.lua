@@ -10,7 +10,7 @@ function Text.new(text, font, options)
     local t = { 
         text = text, 
         font = font, 
-        align = options.align or { h = toolkit.Align.left, v = toolkit.Align.baseline },
+        align = options.align or { h = toolkit.alignLeft, v = toolkit.alignBaseline },
         options = options
     }
 
@@ -43,14 +43,14 @@ function Text:drawInLayer(layer, rect, explicitOptions)
 
     local align = explicitOptions.align or self.align
     local position = rect:topLeft()
-    if align.h == toolkit.Align.right then
+    if align.h == toolkit.alignRight then
         position.x = rect:topRight().x
-    elseif align.h == toolkit.Align.center then
+    elseif align.h == toolkit.alignCenter then
         position.x = rect:topMid().x
     end
-    if (align.v == toolkit.Align.bottom) or (align.v == toolkit.Align.descender) then
+    if (align.v == toolkit.alignBottom) or (align.v == toolkit.alignDescender) then
         position.y = rect:bottomLeft().y
-    elseif (align.v == toolkit.Align.middle) or (align.v == toolkit.Align.baseline) then
+    elseif (align.v == toolkit.alignMiddle) or (align.v == toolkit.alignBaseline) then
         position.y = rect:midLeft().y
     end
 

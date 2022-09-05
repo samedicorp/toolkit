@@ -3,17 +3,13 @@
 --  All code (c) 2022, The Samedi Corporation.
 -- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-local Align = {}
+toolkit.alignLeft = AlignH_Left
+toolkit.alignCenter = AlignH_Center
+toolkit.alignRight = AlignH_Right
 
-Align.left = _ENV.AlignH_Left
-Align.center = _ENV.AlignH_Center
-Align.right = _ENV.AlignH_Right
-
-Align.top = _ENV.AlignV_Top
-Align.ascender = _ENV.AlignV_Ascender
-Align.middle = _ENV.AlignV_Middle
-Align.baseline = _ENV.AlignV_Baseline
-Align.bottom = _ENV.AlignV_Bottom
-Align.descender = _ENV.AlignV_Descender
-
-toolkit.Align = Align
+toolkit.alignTop = AlignV_Top
+toolkit.alignAscender = AlignV_Ascender
+toolkit.alignMiddle = AlignV_Middle
+toolkit.alignBaseline = AlignV_Baseline
+toolkit.alignBottom = AlignV_Bottom
+toolkit.alignDescender = AlignV_Descender

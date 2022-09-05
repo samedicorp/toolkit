@@ -25,7 +25,7 @@ function Button:init(rect, text, options)
     self.onMouseDown = options.onMouseDown
     self.onMouseDrag = options.onMouseDrag
     self.onMouseUp = options.onMouseUp
-    self.align = { h = toolkit.Align.center, v = toolkit.Align.middle }
+    self.align = { h = toolkit.alignCenter, v = toolkit.alignMiddle }
     self.drawInLayer = style
     self.labelInset = options.labelInset or 2
     self.fitText = options.fitText or true
