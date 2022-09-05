@@ -59,18 +59,18 @@ function Layer:textLineField(lines, rect, font)
     local bar = toolkit.Rect.new(x + width - scrollBarWidth + 1, y, scrollBarWidth, height - 1)
     local barIn = bar:inset(4)
 
-    local upFill = toolkit.Color.black
-    local downFill = toolkit.Color.black
+    local upFill = toolkit.black
+    local downFill = toolkit.black
 
     local s = self.scroll or 0
     local cursor = self.screen:cursor()
     if self.screen:isCursorDown() and (cursor.x > (width - scrollBarWidth)) then
         if cursor.y > (height / 2) then
             self.scroll = s + 1
-            downFill = toolkit.Color.white
+            downFill = toolkit.white
         elseif s > 0 then
             self.scroll = s - 1
-            upFill = toolkit.Color.white
+            upFill = toolkit.white
         end
     end
 
@@ -88,12 +88,12 @@ function Layer:textLineField(lines, rect, font)
     -- local text = string.format('render cost: %.02f', getRenderCost() / getRenderCostMax()) 
     -- addText(layer, font, text, 10, 20)
 
-    bar:draw(layer, toolkit.Color.white, toolkit.Color.black)
+    bar:draw(layer, toolkit.white, toolkit.black)
     local barInH = barIn.height
     barIn.height = barIn.width
     local upT = toolkit.Triangle.new(barIn:bottomLeft(), barIn:bottomRight(), barIn:topLeft():mid(barIn:topRight()))
-    upT:draw(layer, toolkit.Color.white, upFill)
+    upT:draw(layer, toolkit.white, upFill)
     barIn.y = barIn.y + barInH - barIn.width
     local downT = toolkit.Triangle.new(barIn:topLeft(), barIn:topRight(), barIn:bottomLeft():mid(barIn:bottomRight()))
-    downT:draw(layer, toolkit.Color.white, downFill)
+    downT:draw(layer, toolkit.white, downFill)
 end

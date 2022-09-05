@@ -47,17 +47,17 @@ function Button:lineStyle(layer, isOver, isDown)
     local fill
     local text
     if isDown and isOver then
-        stroke = toolkit.Color.red
-        text = toolkit.Color.black
-        fill = toolkit.Color.white
+        stroke = toolkit.red
+        text = toolkit.black
+        fill = toolkit.white
     elseif isOver then
-        stroke = toolkit.Color.red
-        text = toolkit.Color.white
-        fill = toolkit.Color.black
+        stroke = toolkit.red
+        text = toolkit.white
+        fill = toolkit.black
     else
-        stroke = toolkit.Color.white
-        text = toolkit.Color.white
-        fill = toolkit.Color.black
+        stroke = toolkit.white
+        text = toolkit.white
+        fill = toolkit.black
     end
 
     self:autoSize(layer)
@@ -71,17 +71,17 @@ function Button:defaultStyle(layer, isOver, isDown)
     local fill
     local text
     if isDown and isOver then
-        stroke = toolkit.Color.white
-        text = toolkit.Color.black
-        fill = toolkit.Color.white
+        stroke = toolkit.white
+        text = toolkit.black
+        fill = toolkit.white
     elseif isOver then
-        stroke = toolkit.Color.white
-        text = toolkit.Color.white
+        stroke = toolkit.white
+        text = toolkit.white
         fill = toolkit.Color.new(1, 1, 1, 0.2)
     else
-        stroke = toolkit.Color.white
-        text = toolkit.Color.white
-        fill = toolkit.Color.black
+        stroke = toolkit.white
+        text = toolkit.white
+        fill = toolkit.black
     end
 
     self:autoSize(layer)

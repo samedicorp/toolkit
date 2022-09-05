@@ -13,9 +13,9 @@ end
 
 function Bar:drawInLayer(layer)
     local inset = self.rect.width * (1.0 - self.value)
-    self.rect:draw(layer.layer, toolkit.Color.white, toolkit.Color.black)
+    self.rect:draw(layer.layer, toolkit.white, toolkit.black)
     local r = self.rect:inset(0, 0, inset, 0)
-    r:draw(layer.layer, toolkit.Color.white, toolkit.Color.white)
+    r:draw(layer.layer, toolkit.white, toolkit.white)
 end
 
 function toolkit.Widget:addBar(...)
