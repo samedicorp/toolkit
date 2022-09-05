@@ -15,10 +15,10 @@ function Button:init(rect, text, options)
 
     local style = options.style
     if type(style) == "string" then
-        style = Button[style]
+        style = Button["style_" .. style]
     end
     if not style then 
-        style = Button.defaultStyle
+        style = Button.style_default
     end
 
     self.text = toolkit.Text.asText(text)
@@ -42,7 +42,7 @@ function Button:autoSize(layer)
     end
 end
 
-function Button:lineStyle(layer, isOver, isDown)
+function Button:style_line(layer, isOver, isDown)
     local stroke = toolkit.red
     local fill = toolkit.black
     local text = toolkit.white
@@ -59,7 +59,18 @@ function Button:lineStyle(layer, isOver, isDown)
     self.text:drawInLayer(layer, lr, { fill = text, align = self.align })
 end
 
-function Button:defaultStyle(layer, isOver, isDown)
+function Button:arrowColors(isOver, isDown)
+    local stroke = toolkit.white
+    local fill = toolkit.black
+    if isDown and isOver then
+        fill = toolkit.white
+    elseif isOver then
+        fill = toolkit.Color.new(1, 1, 1, 0.2)
+    end
+    return stroke, fill
+end
+
+function Button:style_default(layer, isOver, isDown)
     local stroke = toolkit.white
     local fill = toolkit.black
     local text = toolkit.white
@@ -77,32 +88,32 @@ function Button:defaultStyle(layer, isOver, isDown)
 end
 
 
-function Button:upArrowStyle(layer, isOver, isDown)
-    local stroke = toolkit.white
-    local fill = toolkit.black
-    if isDown and isOver then
-        fill = toolkit.white
-    elseif isOver then
-        fill = toolkit.Color.new(1, 1, 1, 0.2)
-    end
-
+function Button:style_upArrow(layer, isOver, isDown)
+    local stroke, fill = self:arrowColors(isOver, isDown)
     local rect = self.rect
     local upT = toolkit.Triangle.new(rect:bottomLeft(), rect:bottomRight(), rect:topLeft():mid(rect:topRight()))
     upT:draw(layer.layer, stroke, fill)
 end
 
 
-function Button:downArrowStyle(layer, isOver, isDown)
-    local stroke = toolkit.white
-    local fill = toolkit.black
-    if isDown and isOver then
-        fill = toolkit.white
-    elseif isOver then
-        fill = toolkit.Color.new(1, 1, 1, 0.2)
-    end
-
+function Button:style_downArrow(layer, isOver, isDown)
+    local stroke, fill = self:arrowColors(isOver, isDown)
     local rect = self.rect
     local downT = toolkit.Triangle.new(rect:topLeft(), rect:topRight(), rect:bottomLeft():mid(rect:bottomRight()))
+    downT:draw(layer.layer, stroke, fill)
+end
+
+function Button:style_leftArrow(layer, isOver, isDown)
+    local stroke, fill = self:arrowColors(isOver, isDown)
+    local rect = self.rect
+    local downT = toolkit.Triangle.new(rect:topLeft():mid(rect:bottomLeft()), rect:topRight(), rect:bottomRight())
+    downT:draw(layer.layer, stroke, fill)
+end
+
+function Button:style_rightArrow(layer, isOver, isDown)
+    local stroke, fill = self:arrowColors(isOver, isDown)
+    local rect = self.rect
+    local downT = toolkit.Triangle.new(rect:topRight():mid(rect:bottomRight()), rect:topLeft(), rect:bottomLeft())
     downT:draw(layer.layer, stroke, fill)
 end
 
