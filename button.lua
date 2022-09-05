@@ -76,6 +76,36 @@ function Button:defaultStyle(layer, isOver, isDown)
     self.text:drawInLayer(layer, lr, { fill = text, align = self.align })
 end
 
+
+function Button:upArrowStyle(layer, isOver, isDown)
+    local stroke = toolkit.white
+    local fill = toolkit.black
+    if isDown and isOver then
+        fill = toolkit.white
+    elseif isOver then
+        fill = toolkit.Color.new(1, 1, 1, 0.2)
+    end
+
+    local rect = self.rect
+    local upT = toolkit.Triangle.new(rect:bottomLeft(), rect:bottomRight(), rect:topLeft():mid(rect:topRight()))
+    upT:draw(layer.layer, stroke, fill)
+end
+
+
+function Button:downArrowStyle(layer, isOver, isDown)
+    local stroke = toolkit.white
+    local fill = toolkit.black
+    if isDown and isOver then
+        fill = toolkit.white
+    elseif isOver then
+        fill = toolkit.Color.new(1, 1, 1, 0.2)
+    end
+
+    local rect = self.rect
+    local downT = toolkit.Triangle.new(rect:topLeft(), rect:topRight(), rect:bottomLeft():mid(rect:bottomRight()))
+    downT:draw(layer.layer, stroke, fill)
+end
+
 function toolkit.Widget:addButton(...)
     local button = Button.new(...)
     self:addWidget(button)
