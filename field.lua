@@ -35,11 +35,9 @@ function Field:drawInLayer(layer)
     if state.scrollToEnd then
         scroll = #lines - lineCount
         state.scroll = scroll
-        printf("scroll to end %s", scroll)
     end
 
     for i,line in ipairs(lines) do
-        printf("%s", i)
         if i >= scroll then
             y = y + font.size
             addText(layer.layer, font.font, line, x, y)
