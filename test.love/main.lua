@@ -10,6 +10,16 @@ end
 
 function love.draw()
     screen_test()
+    local x = love.mouse.getX()
+    local y = love.mouse.getY()
+    local down
+    if love.mouse.isDown() then
+        down = "down"
+    else
+        down = ""
+    end
+
+    love.graphics.print(string.format("%s, %s %s", x, y, down), 10, 1000)
 end
 
 function love.update()

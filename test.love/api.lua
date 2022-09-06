@@ -1,6 +1,10 @@
 function getResolution()
     local x, y, w, h = love.window.getSafeArea()
-    return love.window.toPixels(w), love.window.toPixels(h)
+    local rx = love.window.toPixels(w)
+    local ry = love.window.toPixels(h)
+    print(rx)
+    print(ry)
+    return rx, ry
 end
 
 function setNextFillColor(layer, red, green, blue, alpha)
@@ -60,11 +64,15 @@ function getCursor()
 end
 
 function getCursorDown()
-    return love.mouse.isDown()
+    return love.mouse.isDown(1)
 end
 
 function addText(layer, font, text, x, y)
     alignment = alignment or { h = AlignH_Left, v = AlignV_Top }
+
+    for i,v in ipairs(fillColor) do
+        print(v)
+    end
 
     local t = love.graphics.newText(font, { fillColor, text })
     local width, height = t:getDimensions()
