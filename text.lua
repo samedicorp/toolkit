@@ -34,12 +34,8 @@ function Text:drawInLayer(layer, rect, explicitOptions)
     explicitOptions = explicitOptions or {}
 
     local position = rect:bottomMid()
-    local options = explicitOptions or {}
     local font = (self.font or layer.defaultFont).font
-    local fill = options.fill or self.options.fill
-    if fill then
-        fill:setNextFill(layer.layer)
-    end
+    local fill = explicitOptions.fill or self.options.fill
 
     local align = explicitOptions.align or self.align
     local position = rect:topLeft()
@@ -54,6 +50,9 @@ function Text:drawInLayer(layer, rect, explicitOptions)
         position.y = rect:midLeft().y
     end
 
+    if fill then
+        fill:setNextFill(layer.layer)
+    end
     setNextTextAlign(layer.layer, align.h, align.v)
     addText(layer.layer, font, self.text, position.x, position.y)
 end

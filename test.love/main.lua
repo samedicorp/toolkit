@@ -9,6 +9,8 @@ function love.load()
 end
 
 function love.draw()
+    love.graphics.setBlendMode("alpha")
+
     screen_test()
     local x = love.mouse.getX()
     local y = love.mouse.getY()

@@ -2,8 +2,6 @@ function getResolution()
     local x, y, w, h = love.window.getSafeArea()
     local rx = love.window.toPixels(w)
     local ry = love.window.toPixels(h)
-    print(rx)
-    print(ry)
     return rx, ry
 end
 
@@ -33,7 +31,13 @@ function addBox(layer, x, y, width, height)
 end
 
 function addBoxRounded(layer, x, y, width, height, radius)
+    local red, green, blue, alpha = fillColor
+    love.graphics.setColor(red, green, blue, alpha)
     love.graphics.rectangle("fill", x, y, width, height, radius, radius)
+
+    red, green, blue, alpha = strokeColor
+    love.graphics.setColor(red, green, blue, alpha)
+    love.graphics.rectangle("line", x, y, width, height, radius, radius)
 end
 
 function addTriangle(layer, x1, y1, x2, y2, x3, y3)
@@ -70,11 +74,7 @@ end
 function addText(layer, font, text, x, y)
     alignment = alignment or { h = AlignH_Left, v = AlignV_Top }
 
-    for i,v in ipairs(fillColor) do
-        print(v)
-    end
-
-    local t = love.graphics.newText(font, { fillColor, text })
+    local t = love.graphics.newText(font, text)
     local width, height = t:getDimensions()
 
     if alignment.h == AlignH_Center then
@@ -87,6 +87,7 @@ function addText(layer, font, text, x, y)
         y = y + (height / 2)
     end
 
+    love.graphics.setColor(fillColor)
     love.graphics.draw(t, x, y - height)
 end
 
