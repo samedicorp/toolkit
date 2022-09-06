@@ -3,16 +3,13 @@ require('api')
 
 toolkit = {}
 require('samedicorp.toolkit.toolkit')
+require('screen_test')
 
 function love.load()
 end
 
 function love.draw()
-    local screen = toolkit.Screen.new()
-    local layer = screen:addLayer()
-    layer:addLabel({100, 100}, "Hello World")
-    layer:addButton({100, 150}, "Button")
-    layer:render()
+    screen_test()
 end
 
 function love.update()

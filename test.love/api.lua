@@ -32,6 +32,16 @@ function addBoxRounded(layer, x, y, width, height, radius)
     love.graphics.rectangle("fill", x, y, width, height, radius, radius)
 end
 
+function addTriangle(layer, x1, y1, x2, y2, x3, y3)
+    local red, green, blue, alpha = fillColor
+    love.graphics.setColor(red, green, blue, alpha)
+    love.graphics.polygon("fill", x1, y1, x2, y2, x3, y3)
+
+    red, green, blue, alpha = strokeColor
+    love.graphics.setColor(red, green, blue, alpha)
+    love.graphics.polygon("line", x1, y1, x2, y2, x3, y3)
+end
+
 function createLayer()
 end
 
@@ -56,7 +66,7 @@ end
 function addText(layer, font, text, x, y)
     alignment = alignment or { h = AlignH_Left, v = AlignV_Top }
 
-    local t = love.graphics.newText(font, text)
+    local t = love.graphics.newText(font, { fillColor, text })
     local width, height = t:getDimensions()
 
     if alignment.h == AlignH_Center then
@@ -77,6 +87,9 @@ function getTextBounds(font, text)
     local width, height = t:getDimensions()
     t:release()
     return width, height
+end
+
+function requestAnimationFrame(frame)
 end
 
 AlignH_Left = 1
