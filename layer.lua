@@ -55,6 +55,7 @@ function Layer:textLineField(lines, rect, font)
     local height = rect.height
 
     local scrollBarWidth = 24
+    local scrollX = x + width - scrollBarWidth
 
     local bar = toolkit.Rect.new(x + width - scrollBarWidth + 1, y, scrollBarWidth, height - 1)
     local barIn = bar:inset(4)
@@ -62,14 +63,14 @@ function Layer:textLineField(lines, rect, font)
     local upFill = toolkit.black
     local downFill = toolkit.black
 
-    local s = self.scroll or 0
+    local s = scroll or 0
     local cursor = self.screen:cursor()
-    if self.screen:isCursorDown() and (cursor.x > (width - scrollBarWidth)) then
+    if self.screen:isCursorDown() and (cursor.x > scrollX) then
         if cursor.y > (height / 2) then
-            self.scroll = s + 1
+            scroll = s + 1
             downFill = toolkit.white
         elseif s > 0 then
-            self.scroll = s - 1
+            scroll = s - 1
             upFill = toolkit.white
         end
     end
