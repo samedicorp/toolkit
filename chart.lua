@@ -13,6 +13,7 @@ function Chart:init(rect, bars, fontName)
         count = count + 1
     end
 
+    rect = self.rect
     local labelSize = rect.height / (5 * count)
     local labelFont = toolkit.Font.new(fontName, labelSize)
     local barHeight = (rect.height / (count)) - labelFont.size

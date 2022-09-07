@@ -9,7 +9,7 @@
             "command": "/Applications/love.app/Contents/MacOS/love test.love",
             "problemMatcher": [],
             "group": {
-                "kind": "build",
+                "kind": "test",
                 "isDefault": true
             }
         }

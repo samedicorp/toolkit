@@ -74,6 +74,13 @@ function screen_test()
     
     bufferField = layer:addField({200, 100, 200, 200}, fieldState)
     
+    local values = {
+        { name = "item 1", value = 0.5 },
+        { name = "item 2", value = 0.2 },
+        { name = "item 3", value = 0.8 }
+    }
+    layer:addChart({ 500, 100, 200, 200 }, values, "Play")
+
     layer:render()
     screen:scheduleRefresh()
 end
