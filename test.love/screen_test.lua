@@ -74,8 +74,13 @@ function screen_test()
     
     bufferField = layer:addField({200, 100, 200, 200}, fieldState)
     
-    scrollbar = layer:addScrollbar({ 400, 100, 20, 200})
-    
+    scrollState = scrollState or {}
+    scrollbar = layer:addScrollbar({ 400, 100, 20, 200}, scrollState, {
+        onScroll = function(s)
+            print("scrolled to " .. s)
+        end
+    })
+
     local values = {
         { name = "item 1", value = 0.5 },
         { name = "item 2", value = 0.2 },
