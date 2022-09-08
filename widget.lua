@@ -44,11 +44,12 @@ function Widget:renderAll(layer, cursor, isDown)
         over = self
     end
 
+    self:drawInLayer(layer, isOver, isDown)
+
     for i,widget in ipairs(self.widgets) do
         over = widget:renderAll(layer, cursor, isDown) or over
     end
 
-    self:drawInLayer(layer, isOver, isDown)
     return over
 end
 

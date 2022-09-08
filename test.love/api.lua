@@ -101,6 +101,10 @@ end
 function requestAnimationFrame(frame)
 end
 
+function logMessage(...)
+    print(...)
+end
+
 AlignH_Left = 1
 AlignH_Center = 2
 AlignH_Right = 3

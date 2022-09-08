@@ -32,11 +32,11 @@ function Rect:inset(l,t,r,b)
     return self.new(self.x + l, self.y + t, self.width - (l + r), self.height - (t + b))
 end
 
-function right()
+function Rect:right()
     return self.x + self.width - 1
 end
 
-function bottom()
+function Rect:bottom()
     return self.y + self.height - 1
 end
 
@@ -74,6 +74,10 @@ end
 
 function Rect:contains(point)
     return (point.x >= self.x) and (point.y >= self.y) and (point.x < (self.x + self.width)) and (point.y < (self.y + self.height))
+end
+
+function Rect:setBottom(b)
+    self.y = b - self.height - 1
 end
 
 function Rect:draw(layer, stroke, fill, options)
