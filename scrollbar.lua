@@ -14,7 +14,7 @@ function Scrollbar:init(rect, state, options)
     self.maximum = options.maximum or 0
 
     local frameRect = self.rect
-    local frameBotton = frameRect:bottom()
+    local frameBottom = frameRect:bottom()
     local buttonRect = frameRect:inset(2)
     buttonRect.height = buttonRect.width
     
@@ -26,7 +26,7 @@ function Scrollbar:init(rect, state, options)
         end
     })
 
-    buttonRect:setBottom(frameBotton)
+    buttonRect:setBottom(frameBottom)
     self:addButton(buttonRect, "", { 
         style = "downArrow", 
         onMouseDown = function()
