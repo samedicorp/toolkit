@@ -76,6 +76,7 @@ function screen_test()
     
     scrollState = scrollState or {}
     scrollbar = layer:addScrollbar({ 400, 100, 20, 200}, scrollState, {
+        maximum = 100,
         onScroll = function(s)
             print("scrolled to " .. s)
         end

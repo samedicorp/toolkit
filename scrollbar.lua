@@ -10,6 +10,8 @@ function Scrollbar:init(rect, state, options)
 
     self.state = state
     self.onScroll = options.onScroll
+    self.minimum = options.minimum or 0
+    self.maximum = options.maximum or 0
 
     local frameRect = self.rect
     local frameBotton = frameRect:bottom()
@@ -44,9 +46,17 @@ function Scrollbar:scrollDown()
 end
 
 function Scrollbar:scrollTo(s)
-    self.state.scroll = s
-    if self.onScroll then
-        self.onScroll(s)
+    if s > self.maximum then
+        s = self.maximum
+    elseif s < self.minimum then
+        s = self.minimum
+    end
+
+    if s ~= self.state.scroll then
+        self.state.scroll = s
+        if self.onScroll then
+            self.onScroll(s)
+        end
     end
 end
 
