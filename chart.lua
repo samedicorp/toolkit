@@ -13,23 +13,28 @@ function Chart:init(rect, bars, fontName)
         count = count + 1
     end
 
-    local labelSize = rect.height / (5 * count)
-    local labelFont = toolkit.Font.new(fontName, labelSize)
-    local barHeight = (rect.height / (count)) - labelFont.size
+    local textColor = toolkit.blue
+    local percentColor = toolkit.blue
 
-    local nameAlign = { h = toolkit.alignLeft, v = toolkit.alignTop }
-    local percentAlign = { h = toolkit.alignRight, v = toolkit.alignTop }
+    local labelSize = rect.height / (2 * count)
+    local spacerSize = rect.height / (5 * count)
+    local labelFont = toolkit.Font.new(fontName, labelSize)
+    local barHeight = (rect.height / (count)) - spacerSize
+
+    local nameAlign = { h = toolkit.alignLeft, v = toolkit.alignCenter }
+    local percentAlign = { h = toolkit.alignRight, v = toolkit.alignCenter }
     
     for name,bar in pairs(bars) do
         local percent = math.floor(bar.value * 100)
         rect.height = barHeight
         self:addWidget(toolkit.Bar.new(rect, bar.value))
-        rect.y = rect.y + barHeight
-        
-        rect.height = labelSize
-        self:addLabel(rect, toolkit.Text.new(name, labelFont, { align = nameAlign }))
-        self:addLabel(rect, toolkit.Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign }))
-        rect.y = rect.y + labelFont.size
+        -- rect.y = rect.y + barHeight - labelFont.size
+        local labelRect = rect:inset(spacerSize / 2)
+        -- labelRect.height = labelSize
+
+        self:addLabel(labelRect, toolkit.Text.new(name, labelFont, { align = nameAlign, fill = textColor }))
+        self:addLabel(labelRect, toolkit.Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign, fill = percentColor }))
+        rect.y = rect.y + barHeight + spacerSize
     end
 
     return self
