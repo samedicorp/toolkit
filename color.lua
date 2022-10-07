@@ -18,6 +18,7 @@ toolkit.black = Color.new(0, 0, 0)
 toolkit.red = Color.new(1, 0, 0)
 toolkit.green = Color.new(0, 1, 0)
 toolkit.blue = Color.new(0, 0, 1)
+toolkit.grey = Color.new(0.5, 0.5, 0.5)
 
 function Color:setNextStroke(layer)
     setNextStrokeColor(layer, self.red, self.green, self.blue, self.alpha)
