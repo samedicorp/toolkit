@@ -21,8 +21,8 @@ function Chart:init(rect, bars, fontName)
     local labelFont = toolkit.Font.new(fontName, labelSize)
     local barHeight = (rect.height / (count)) - spacerSize
 
-    local nameAlign = { h = toolkit.alignLeft, v = toolkit.alignCenter }
-    local percentAlign = { h = toolkit.alignRight, v = toolkit.alignCenter }
+    local nameAlign = { h = toolkit.alignLeft, v = toolkit.alignMiddle }
+    local percentAlign = { h = toolkit.alignRight, v = toolkit.alignMiddle }
     
     for name,bar in pairs(bars) do
         local percent = math.floor(bar.value * 100)
