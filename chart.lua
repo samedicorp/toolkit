@@ -5,16 +5,18 @@
 
 local Chart = toolkit.define('Chart', 'Widget')
 
-function Chart:init(rect, bars, fontName)
+function Chart:init(rect, bars, options)
     self.super.init(self, rect)
+
+    options = options or {}
 
     local count = 0
     for _,_ in pairs(bars) do
         count = count + 1
     end
 
-    local textColor = toolkit.blue
-    local percentColor = toolkit.blue
+    local useValueColors = options.useValueColors or false
+    local fontName = options.fontName or "Play"
 
     local labelSize = rect.height / (2 * count)
     local spacerSize = rect.height / (5 * count)
@@ -32,8 +34,15 @@ function Chart:init(rect, bars, fontName)
         local labelRect = rect:inset(spacerSize / 2)
         -- labelRect.height = labelSize
 
-        self:addLabel(labelRect, toolkit.Text.new(name, labelFont, { align = nameAlign, fill = textColor }))
-        self:addLabel(labelRect, toolkit.Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign, fill = percentColor }))
+        local percentColor = toolkit.blue
+            if useValueColors then
+            if percent < 25 then
+                percentColor = toolkit.red
+            end
+        end
+
+        self:addLabel(labelRect, toolkit.Text.new(name, labelFont, { align = nameAlign, fill = percentColor, shadow = toolkit.black  }))
+        self:addLabel(labelRect, toolkit.Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign, fill = percentColor, shadow = toolkit.black }))
         rect.y = rect.y + barHeight + spacerSize
     end
 
