@@ -36,9 +36,15 @@ function Text:drawInLayer(layer, rect, explicitOptions)
     local position = rect:bottomMid()
     local options = explicitOptions or {}
     local font = (self.font or layer.defaultFont).font
+
     local fill = options.fill or self.options.fill
     if fill then
         fill:setNextFill(layer.layer)
+    end
+
+    local shadow = options.shadow or self.options.shadow
+    if shadow then
+        shadow:setNextShadow(layer.layer)
     end
 
     local align = explicitOptions.align or self.align

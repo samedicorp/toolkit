@@ -27,3 +27,7 @@ end
 function Color:setNextFill(layer)
     setNextFillColor(layer, self.red, self.green, self.blue, self.alpha)
 end
+
+function Color:setNextShadow(layer, radius)
+    setNextShadow(layer, radius or 4, self.red, self.green, self.blue, self.alpha)
+end
