@@ -26,7 +26,8 @@ function Chart:init(rect, bars, options)
     local nameAlign = { h = toolkit.alignLeft, v = toolkit.alignMiddle }
     local percentAlign = { h = toolkit.alignRight, v = toolkit.alignMiddle }
     
-    for name,bar in pairs(bars) do
+    
+    for name,bar in sortedPairs(bars) do
         local percent = math.floor(bar.value * 100)
         rect.height = barHeight
         self:addWidget(toolkit.Bar.new(rect, bar.value))
