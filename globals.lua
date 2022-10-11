@@ -17,7 +17,7 @@ function sortedPairs (t, f)
   local iter = function ()   -- iterator function
     i = i + 1
     if a[i] == nil then return nil
-    else return a[i], t[a[i]]
+    else return a[i], t[ a[i] ]
     end
   end
   return iter
