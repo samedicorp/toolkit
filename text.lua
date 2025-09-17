@@ -7,9 +7,9 @@ local Text = toolkit.define('Text')
 
 function Text.new(text, font, options)
     options = options or {}
-    local t = { 
-        text = text, 
-        font = font, 
+    local t = {
+        text = text,
+        font = font,
         align = options.align or { h = toolkit.alignLeft, v = toolkit.alignBaseline },
         options = options
     }
@@ -18,9 +18,9 @@ function Text.new(text, font, options)
     return t
 end
 
-function Text.asText(text)
+function Text.asText(text, font, options)
     if type(text) == "string" then
-        text = Text.new(text)
+        text = Text.new(text, font, options)
     end
     return text
 end
