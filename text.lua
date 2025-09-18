@@ -9,7 +9,7 @@ function Text.new(text, font, options)
     options = options or {}
     local t = {
         text = text,
-        font = font,
+        font = font or options.font,
         align = options.align or { h = toolkit.alignLeft, v = toolkit.alignBaseline },
         options = options
     }
