@@ -5,15 +5,16 @@
 
 local Field = toolkit.define('Field', 'Widget')
 
-function Field:init(rect, state, font)
+function Field:init(rect, state, options)
     state = state or {}
     state.lines = state.lines or {}
     state.scroll = state.scroll or 0
     state.scrollToEnd = state.scrollToEnd or false
+    options = options or {}
 
     self.super.init(self, rect)
     self.state = state
-    self.font = font
+    self.font = options.font
     return self
 end
 

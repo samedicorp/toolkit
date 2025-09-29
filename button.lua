@@ -21,7 +21,7 @@ function Button:init(rect, text, options)
         style = Button.style_default
     end
 
-    self.text = toolkit.Text.asText(text)
+    self.text = toolkit.Text.asText(text, options)
     self.onMouseDown = options.onMouseDown
     self.onMouseDrag = options.onMouseDrag
     self.onMouseUp = options.onMouseUp

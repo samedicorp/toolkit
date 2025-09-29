@@ -28,8 +28,8 @@ function Chart:init(rect, bars, fontName)
         rect.y = rect.y + barHeight
         
         rect.height = labelSize
-        self:addLabel(rect, toolkit.Text.new(name, labelFont, { align = nameAlign }))
-        self:addLabel(rect, toolkit.Text.new(string.format("%d%%", percent), labelFont, { align = percentAlign }))
+        self:addLabel(rect, toolkit.Text.new(name, { font = labelFont, align = nameAlign }))
+        self:addLabel(rect, toolkit.Text.new(string.format("%d%%", percent), { font = labelFont, align = percentAlign }))
         rect.y = rect.y + labelFont.size
     end
 

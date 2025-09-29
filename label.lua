@@ -7,7 +7,7 @@ local Label = toolkit.define('Label', 'Widget')
 
 function Label:init(rect, text, options)
     self.super.init(self, rect)
-    self.text = toolkit.Text.asText(text, nil, options)
+    self.text = toolkit.Text.asText(text, options)
     return self
 end
 
