@@ -38,6 +38,7 @@ function Widget:addWidget(widget)
 end
 
 function Widget:renderAll(layer, cursor, isDown)
+    self:layout(layer)
     local over
     local isOver = self:hitTest(cursor)
     if isOver then
@@ -46,11 +47,14 @@ function Widget:renderAll(layer, cursor, isDown)
 
     self:drawInLayer(layer, isOver, isDown)
 
-    for i,widget in ipairs(self.widgets) do
+    for i, widget in ipairs(self.widgets) do
         over = widget:renderAll(layer, cursor, isDown) or over
     end
 
     return over
+end
+
+function Widget:layout(layer)
 end
 
 function Widget:drawInLayer(layer, isOver, isDown)
