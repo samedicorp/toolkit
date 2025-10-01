@@ -29,14 +29,14 @@ function Layer:render()
     local over = self:renderAll(self, cursor, isDown)
     self.over = over
 
-    if isDown and over and not clickedWidget then
-        clickedWidget = over
-        clickedWidget:mouseDown(cursor)
-    elseif not isDown and clickedWidget then
-        clickedWidget:mouseUp(cursor)
-        clickedWidget = nil
-    elseif isDown and clickedWidget then
-        clickedWidget:mouseDrag(cursor)
+    if isDown and over and not toolkit.clickedWidget then
+        toolkit.clickedWidget = over
+        toolkit.clickedWidget:mouseDown(cursor)
+    elseif not isDown and toolkit.clickedWidget then
+        toolkit.clickedWidget:mouseUp(cursor)
+        toolkit.clickedWidget = nil
+    elseif isDown and toolkit.clickedWidget then
+        toolkit.clickedWidget:mouseDrag(cursor)
     end
 end
 
@@ -75,7 +75,7 @@ function Layer:textLineField(lines, rect, font)
         end
     end
 
-    for i,w in ipairs(lines) do
+    for i, w in ipairs(lines) do
         if i >= s then
             y = y + font.size
             addText(layer, font.font, w, x, y)
@@ -84,9 +84,9 @@ function Layer:textLineField(lines, rect, font)
             end
         end
         i = i + 1
-    end 
+    end
 
-    -- local text = string.format('render cost: %.02f', getRenderCost() / getRenderCostMax()) 
+    -- local text = string.format('render cost: %.02f', getRenderCost() / getRenderCostMax())
     -- addText(layer, font, text, 10, 20)
 
     bar:draw(layer, toolkit.white, toolkit.black)

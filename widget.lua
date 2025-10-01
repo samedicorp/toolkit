@@ -39,6 +39,7 @@ end
 
 function Widget:renderAll(layer, cursor, isDown)
     self:layout(layer)
+
     local over
     local isOver = self:hitTest(cursor)
     if isOver then
